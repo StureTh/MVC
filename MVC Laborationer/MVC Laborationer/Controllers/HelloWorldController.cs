@@ -17,7 +17,7 @@ namespace MVC_Laborationer.Controllers
         public string Welcome(string name, int numtimes = 1)
         {
             
-            return HttpUtility.HtmlEncode($"Hello {name}\n" + $"Numtimes is: {numtimes}");
+            return HttpUtility.HtmlEncode($"Hello {name}\n Numtimes is: {numtimes}");
         }
     }
 }
