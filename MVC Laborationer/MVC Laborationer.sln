@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC Laborationer", "MVC Laborationer\MVC Laborationer.csproj", "{E8A94183-F2BA-434B-A3D7-FB2B982CFAEC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmptyMvcWebApp", "EmptyMvcWebApp\EmptyMvcWebApp.csproj", "{A8FE00FD-20D2-46AD-8003-E6DA4B8676E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTutorial", "MvcTutorial\MvcTutorial.csproj", "{9B1920CB-48C4-48C8-9894-6CCB02482A47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8A94183-F2BA-434B-A3D7-FB2B982CFAEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8A94183-F2BA-434B-A3D7-FB2B982CFAEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8A94183-F2BA-434B-A3D7-FB2B982CFAEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8A94183-F2BA-434B-A3D7-FB2B982CFAEC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8FE00FD-20D2-46AD-8003-E6DA4B8676E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8FE00FD-20D2-46AD-8003-E6DA4B8676E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8FE00FD-20D2-46AD-8003-E6DA4B8676E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8FE00FD-20D2-46AD-8003-E6DA4B8676E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1920CB-48C4-48C8-9894-6CCB02482A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1920CB-48C4-48C8-9894-6CCB02482A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1920CB-48C4-48C8-9894-6CCB02482A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1920CB-48C4-48C8-9894-6CCB02482A47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
