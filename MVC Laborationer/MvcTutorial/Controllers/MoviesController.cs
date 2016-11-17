@@ -13,8 +13,8 @@ namespace MvcTutorial.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Star wars" };
-            //return View(movie);
-            return HttpNotFound();
+            return View(movie);
+            //return HttpNotFound();
         }
     }
 }
