@@ -32,5 +32,7 @@ namespace Labb1.Controllers
 
             return View();
         }
+
+       
     }
 }
