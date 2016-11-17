@@ -1,0 +1,13 @@
+﻿@model IList<String>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="container">
+    @foreach (var URL in Model)
+    {
+        <img src ="@Url.Content(URL)"/>
+    }
+</div>
+
