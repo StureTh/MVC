@@ -81,6 +81,18 @@ namespace Labb1.Controllers
         }
 
 
+        public ActionResult Logout(string url)
+        {
+            if (Session["Mail"] !=null)
+            {
+                Session.Clear();
+                return Redirect(url);
+
+            }
+
+            return Redirect(url);
+        }
+
 
         
     }

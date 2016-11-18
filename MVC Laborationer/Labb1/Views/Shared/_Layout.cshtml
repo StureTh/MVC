@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls
+@using Labb1.Controllers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -18,10 +20,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (Session["Mail"] != null)
+                {
+
+                    @Html.ActionLink("Logout", "Logout", "Account", new {url = Request.Url.AbsoluteUri}, new {@class = "navbar-brand"})
+                    ;
+                }
+                else
+                {
+                  @Html.ActionLink("Login","Login","Account",new {area = "" }, new {@class="navbar-brand"})   
+                }
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
