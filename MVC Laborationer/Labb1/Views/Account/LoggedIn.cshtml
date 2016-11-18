@@ -1,10 +1,13 @@
-﻿
+﻿@using Labb1.Models
+
 @{
     ViewBag.Title = "LoggedIn";
 }
 
-@if (Session["UserId"] != null)
+@if (Session["UserName"] != null)
 {
-    <h4>Hello @Session["Name"].ToString()</h4>
+    
+
+    <h4>Hello @Session["UserName"]</h4>
 }
 

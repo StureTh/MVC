@@ -58,10 +58,16 @@ namespace Labb1.Controllers
         public ActionResult Login(User userAccount)
         {
             var user =
-                userList.FirstOrDefault(usr => usr.Name == userAccount.Name && usr.Password == userAccount.Password);
+                userList.FirstOrDefault(usr => usr.Mail == userAccount.Mail && usr.Password == userAccount.Password);
             if (user != null)
             {
-                Session["User"] = user;
+                Session["UserName"] = user.Name;
+                Session["Mail"] = user.Mail;
+                Session["Password"] = user.Password;
+                Session["Admin?"] = user.IsAdmin;
+
+
+
                 return RedirectToAction("LoggedIn");
             }
 
