@@ -28,7 +28,7 @@ namespace Labb1.Controllers
         [HttpPost]
         public ActionResult Create(Photo photo, HttpPostedFileBase file)
         {
-            file.SaveAs(Path.Combine(Server.MapPath("~PhotoGallery"), file.FileName));
+            file.SaveAs(Path.Combine(Server.MapPath("~/PhotoGallery"), file.FileName));
 
             return View();
         }
