@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcTutorial", "MvcTutorial\MvcTutorial.csproj", "{9B1920CB-48C4-48C8-9894-6CCB02482A47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labb1", "Labb1\Labb1.csproj", "{8C188552-67E8-4EE7-B589-307BA70BB6B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labb1Test", "Labb1\Labb1Test.csproj", "{8C188552-67E8-4EE7-B589-307BA70BB6B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
