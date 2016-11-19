@@ -19,12 +19,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Gallery", "Index", "Gallery", new { area = "" }, new { @class = "navbar-brand" })
                 @if (Session["Mail"] != null)
                 {
 
                     @Html.ActionLink("Logout", "Logout", "Account", new {url = Request.Url.AbsoluteUri}, new {@class = "navbar-brand"})
                     ;
+                    @Html.ActionLink("Upload Picture", "Create","Gallery", new {area=""}, new {@class="navbar-brand"});
                 }
                 else
                 {
