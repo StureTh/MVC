@@ -32,5 +32,10 @@ namespace Labb1.Controllers
 
             return View();
         }
+
+        public ActionResult ShowImg(string image)
+        {
+            return View(model:image);
+        }
     }
 }
