@@ -37,5 +37,19 @@ namespace Labb1.Controllers
         {
             return View(model:image);
         }
+
+        public ActionResult Delete(string image)
+        {
+            string imgPath = HttpContext.Server.MapPath(image);
+            if (System.IO.File.Exists(imgPath))
+            {
+                System.IO.File.Delete(imgPath);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("ShowImg", new {image = image});
+            }
+        }
     }
 }

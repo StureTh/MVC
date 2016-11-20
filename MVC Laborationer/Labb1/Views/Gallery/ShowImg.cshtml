@@ -4,4 +4,8 @@
 }
 
 <h2>ShowImg</h2>
-<img src ="@Url.Content(Model)"/>
+<img src="@Url.Content(Model)"/>
+@if (Session["Admin?"] != null)
+{
+    <a href='@Url.Action("Delete","Gallery", new{image = Model})'>Delete Image</a>
+}
