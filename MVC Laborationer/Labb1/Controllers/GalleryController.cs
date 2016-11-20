@@ -10,12 +10,14 @@ namespace Labb1.Controllers
 {
     public class GalleryController : Controller
     {
+       private static List<Photo> UpdatedPhotoList = new List<Photo>();
         // GET: Gallery
         public ActionResult Index()
         {
             var photoList =
                 Directory.EnumerateFiles(Server.MapPath("~/PhotoGallery"))
                     .Select(photo => "~/PhotoGallery/" + Path.GetFileName(photo)).ToList();
+            
             return View(photoList);
         }
 
@@ -28,6 +30,12 @@ namespace Labb1.Controllers
         [HttpPost]
         public ActionResult Create(Photo photo, HttpPostedFileBase file)
         {
+            photo.UploadDate = DateTime.Now;
+            photo.ImgUrl = "~/PhotoGallery" + file.FileName;
+
+            UpdatedPhotoList.Add(photo);
+
+
             file.SaveAs(Path.Combine(Server.MapPath("~/PhotoGallery"), file.FileName));
 
             return View();

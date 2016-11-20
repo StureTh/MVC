@@ -11,7 +11,7 @@ namespace Labb1.Controllers
         // GET: Home
         public ActionResult Index()
         {
-
+            
             return View();
         }
     }
