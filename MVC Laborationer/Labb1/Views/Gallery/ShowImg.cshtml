@@ -5,7 +5,7 @@
 
 <h2>ShowImg</h2>
 <img src="@Url.Content(Model)"/>
-@if (Session["Admin?"] != null)
+@if (Session["Admin?"] != null && (bool)Session["Admin?"] == true)
 {
     <a href='@Url.Action("Delete","Gallery", new{image = Model})'>Delete Image</a>
 }
