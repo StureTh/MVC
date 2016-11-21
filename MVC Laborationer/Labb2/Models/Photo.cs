@@ -8,14 +8,15 @@ namespace Labb2.Models
 {
     public class Photo
     {
-        public Guid PhotoId { get; set; }
+        [Key]
+        public int PhotoId { get; set; }
 
         public string PhotoName { get; set; }
 
-        public DateTime UploadDate { get; set; }
+        public DateTime? UploadDate { get; set; }
 
         
-        [DataType(DataType.ImageUrl)]
+        
         public string PhotoUrl { get; set; }
 
     }

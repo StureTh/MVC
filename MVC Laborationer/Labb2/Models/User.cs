@@ -10,7 +10,7 @@ namespace Labb2.Models
     public class User
     {
         [Key]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
 
         [Required(ErrorMessage = "Please enter user name")]
         public string UserName { get; set; }
