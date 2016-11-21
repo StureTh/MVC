@@ -10,7 +10,7 @@ namespace Labb1.Controllers
 {
     public class GalleryController : Controller
     {
-       private static List<Photo> UpdatedPhotoList = new List<Photo>();
+       private static IList<Photo> UpdatedPhotoList = new List<Photo>();
         // GET: Gallery
         public ActionResult Index()
         {
@@ -32,7 +32,7 @@ namespace Labb1.Controllers
         {
             photo.UploadDate = DateTime.Now;
             photo.ImgUrl = "~/PhotoGallery" + file.FileName;
-
+             
             UpdatedPhotoList.Add(photo);
 
 
@@ -58,6 +58,18 @@ namespace Labb1.Controllers
             {
                 return RedirectToAction("ShowImg", new {image = image});
             }
+        }
+
+        public ActionResult RecentPhotos()
+        {
+            if (UpdatedPhotoList != null)
+            {
+                var list = UpdatedPhotoList.OrderByDescending(x => x.UploadDate)
+                    .Take(3)
+                    .ToList();
+                ViewBag.list = list;
+            }
+            return PartialView();
         }
     }
 }
