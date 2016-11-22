@@ -9,7 +9,7 @@ namespace Labb2.Controllers
     public class AccountController : Controller
     {
         private static DataAccess Dal = new DataAccess();
-        private User MyProperty { get; set; }
+        
         // GET: Account
         public ActionResult Index()
         {
@@ -29,7 +29,7 @@ namespace Labb2.Controllers
                 return View(userAccount);
 
             }
-            Dal.LoginUser(userAccount);
+            Dal.AddNewUser(userAccount);
             ViewBag.Message = userAccount.UserName + "Success";
 
             return View();
@@ -51,6 +51,7 @@ namespace Labb2.Controllers
             var user = Dal.LoginUser(userAccount);
             if (user != null)
             {
+                Session["UserId"] = user.UserId;
                 Session["UserName"] = user.UserName;
                 Session["Mail"] = user.Mail;
                 Session["Password"] = user.Password;
@@ -66,7 +67,7 @@ namespace Labb2.Controllers
 
         public ActionResult LoggedIn()
         {
-            if (Session["Mail"] != null)
+            if (Session["UserName"] != null)
             {
                 return View();
 
