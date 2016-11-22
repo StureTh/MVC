@@ -13,6 +13,7 @@ namespace Labb2.Models
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "Please enter user name")]
+        [MinLength(3),MaxLength(20)]
         public string UserName { get; set; }
 
         [EmailAddress]
@@ -27,7 +28,9 @@ namespace Labb2.Models
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
-        
+        public bool IsAdmin { get; set; }
+
+        public virtual ICollection<Album> Albums { get; set; }
 
     }
 }

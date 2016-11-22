@@ -11,6 +11,8 @@ namespace Labb2.Models
         [Key]
         public int PhotoId { get; set; }
 
+        [Required(ErrorMessage ="Enter image name")]
+        [MinLength(3),MaxLength(20)]
         public string PhotoName { get; set; }
 
         public DateTime? UploadDate { get; set; }
@@ -18,6 +20,8 @@ namespace Labb2.Models
         
         
         public string PhotoUrl { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
 
     }
 }
