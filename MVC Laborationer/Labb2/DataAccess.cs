@@ -18,6 +18,15 @@ namespace Labb2
             }
 
         }
+
+        public Photo GetPhotoById(Guid id)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var image = ctx.Photos.FirstOrDefault(x => x.PhotoId == id);
+                return image;
+            }
+        }
         public void AddNewPhoto(Photo photo)
         {
             using (TheContext ctx = new TheContext())
@@ -26,6 +35,16 @@ namespace Labb2
                 ctx.SaveChanges();
             }
         }
+
+        internal object GetRecentUploads(int count)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var list = ctx.Photos.OrderByDescending(x => x.UploadDate).Take(count).ToList();
+                return list;
+            }
+        }
+
         public void AddNewAlbum(Album album)
         {
             using (TheContext ctx = new TheContext())

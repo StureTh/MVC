@@ -1,0 +1,9 @@
+﻿@model List<Labb2.Models.Photo>
+    
+@foreach (var photo in Model)
+{
+    <a href="@Url.Action("ShowImage", "Gallery",new {id = photo.PhotoId}, null)">
+        <img src="@Url.Content(photo.PhotoUrl)" alt="Image From Folder" style="max-width: 200px; max-height: 200px" />
+    </a>
+}
+

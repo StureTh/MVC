@@ -180,6 +180,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\UploadPhoto.cshtml" />
+    <Content Include="Views\Gallery\ShowImage.cshtml" />
+    <Content Include="Views\Gallery\RecentUpload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

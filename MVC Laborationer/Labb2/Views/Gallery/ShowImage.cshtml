@@ -1,0 +1,11 @@
+﻿@using Labb2.Models
+@model Labb2.Models.Photo
+
+
+@{
+    ViewBag.Title = "ShowImage";
+}
+
+<h2>ShowImage</h2>
+<img id="@Model.PhotoId" src="@Url.Content(Model.PhotoUrl)"alt="Image from folder"style="max-width: 100%"/>
+

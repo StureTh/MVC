@@ -22,6 +22,7 @@ namespace Labb2.Controllers
             return RedirectToAction("Login","Account");
         }
 
+
         public ActionResult UploadPhoto()
         {
             return View();
@@ -47,6 +48,18 @@ namespace Labb2.Controllers
             return RedirectToAction("Index");
 
 
+        }
+
+        public ActionResult ShowImage(Guid id)
+        {
+            var photo = Dal.GetPhotoById(id);
+            return View(model: photo);
+        }
+
+        public ActionResult RecentUpload()
+        {
+            var list = Dal.GetRecentUploads(3);
+            return PartialView(model: list);
         }
     }
 }

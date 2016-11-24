@@ -3,6 +3,16 @@
 @{
     ViewBag.Title = "Gallery";
 }
+@section featured{
+
+    <div style="margin-left: 88%">
+        <h3>Recent Uploads</h3>
+        @{
+            Html.RenderAction("RecentUpload");
+        }
+    </div>
+}
+
 
 <h2>Gallery</h2>
 <div class="container-fluid">
@@ -15,8 +25,8 @@
     <div style="margin-top: 40px">
         @foreach(var photo in Model)
         {
-            //Byt ut Index mot ShowImage
-            <a href='@Url.Action("Index", "Gallery", new {id = photo.PhotoId}, null)'>
+            
+            <a href='@Url.Action("ShowImage", "Gallery", new {id = photo.PhotoId}, null)'>
                 <img src="@Url.Content(photo.PhotoUrl)"alt="Image From Folder" style="max-width: 100%; max-height:300px"/>
             </a>
         }
