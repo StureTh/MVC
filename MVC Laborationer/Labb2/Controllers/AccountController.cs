@@ -29,6 +29,7 @@ namespace Labb2.Controllers
                 return View(userAccount);
 
             }
+            userAccount.UserId = Guid.NewGuid();
             Dal.AddNewUser(userAccount);
             ViewBag.Message = userAccount.UserName + "Success";
 

@@ -1,0 +1,25 @@
+﻿@model IList<Labb2.Models.Photo>
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<h2>Gallery</h2>
+<div class="container-fluid">
+    <div style="margin-bottom: 40px">
+        @Html.ActionLink("Upload", "UploadPhoto", "Gallery", new {@class = "navbar-brand"})
+    </div>
+    <br/>
+    <br/>
+
+    <div style="margin-top: 40px">
+        @foreach(var photo in Model)
+        {
+            //Byt ut Index mot ShowImage
+            <a href='@Url.Action("Index", "Gallery", new {id = photo.PhotoId}, null)'>
+                <img src="@Url.Content(photo.PhotoUrl)"alt="Image From Folder" style="max-width: 100%; max-height:300px"/>
+            </a>
+        }
+    </div>
+</div>
+
