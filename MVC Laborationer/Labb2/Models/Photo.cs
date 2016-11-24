@@ -8,8 +8,8 @@ namespace Labb2.Models
 {
     public class Photo
     {
-        [Key]
-        public int PhotoId { get; set; }
+        
+        public Guid PhotoId { get; set; }
 
         [Required(ErrorMessage ="Enter image name")]
         [MinLength(3),MaxLength(20)]

@@ -9,8 +9,8 @@ namespace Labb2.Models
 {
     public class Comment
     {
-        [Key]
-        public int CommentId { get; set; }
+        
+        public Guid CommentId { get; set; }
 
         public string CommentComment { get; set; }
 

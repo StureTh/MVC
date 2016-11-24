@@ -9,8 +9,8 @@ namespace Labb2.Models
 {
     public class User
     {
-        [Key]
-        public int UserId { get; set; }
+        
+        public Guid UserId { get; set; }
 
         [Required(ErrorMessage = "Please enter user name")]
         [MinLength(3),MaxLength(20)]
