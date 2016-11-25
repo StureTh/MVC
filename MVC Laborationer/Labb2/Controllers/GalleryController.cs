@@ -60,6 +60,7 @@ namespace Labb2.Controllers
         {
             var list = Dal.GetRecentUploads(3);
             return PartialView(model: list);
+            
         }
     }
 }

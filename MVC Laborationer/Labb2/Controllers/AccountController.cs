@@ -84,7 +84,7 @@ namespace Labb2.Controllers
             if (Session["Mail"] != null)
             {
                 Session.Clear();
-                return Redirect(url);
+                return Redirect("Login");
             }
             return Redirect(url);
         }
