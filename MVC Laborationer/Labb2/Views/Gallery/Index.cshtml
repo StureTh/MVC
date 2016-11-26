@@ -1,4 +1,5 @@
-﻿@model IList<Labb2.Models.Photo>
+﻿
+@model IList<Labb2.Models.Album>
 
 @{
     ViewBag.Title = "Gallery";
@@ -22,12 +23,20 @@
     <br/>
     <br/>
 
-    <div style="margin-top: 40px">
+    @*<div style="margin-top: 40px">
         @foreach(var photo in Model)
         {
             
             <a href='@Url.Action("ShowImage", "Gallery", new {id = photo.PhotoId}, null)'>
                 <img src="@Url.Content(photo.PhotoUrl)"alt="Image From Folder" style="max-width: 100%; max-height:300px"/>
+            </a>
+        }
+    </div>*@
+    <div style="margin-top: 40px">
+        @foreach (var album in Model)
+        {
+            <a href='@Url.Action("ViewAlbum", "Album", new {id = album.AlbumId}, null)'>
+                @Html.ActionLink(@album.AlbumName,"ViewAlbum","Album",new {id= album.AlbumId},new {@class = "navbar-brand"})
             </a>
         }
     </div>

@@ -14,5 +14,11 @@ namespace Labb2.Models
         [Required(ErrorMessage ="Must enter album name")]
         public string AlbumName { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
+
+        public Album()
+        {
+            this.Photos = new HashSet<Photo>();
+            
+        }
     }
 }

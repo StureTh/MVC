@@ -14,7 +14,9 @@ namespace Labb2.Models
 
         public string CommentComment { get; set; }
 
-        public virtual User UserId { get; set; }
+        public DateTime Date { get; set; }
+
+        public virtual Guid UserId { get; set; }
         
 
     }

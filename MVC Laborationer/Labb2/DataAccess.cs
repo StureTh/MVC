@@ -45,11 +45,47 @@ namespace Labb2
             }
         }
 
-        public void AddNewAlbum(Album album)
+        public List<Album> GetAlbums()
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var albumList = ctx.Albums.Include("Photos").ToList();
+
+                return albumList;
+            }
+        }
+
+        public Album GettAlbumById(Guid id)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var album = ctx.Albums.Include("Photos").FirstOrDefault(a => a.AlbumId == id);
+                return album;
+            }
+        }
+
+        public void SavePhotoInAlbum(Guid id, Photo photo)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var album = ctx.Albums.Include("Photos").FirstOrDefault(a => a.AlbumId == id);
+
+                album.Photos.Add(photo);
+                ctx.SaveChanges();
+
+
+
+            }
+        } 
+
+        public void AddNewAlbum(Album album, Guid userId)
         {
             using (TheContext ctx = new TheContext())
             {
                 ctx.Albums.Add(album);
+               
+                var user = ctx.Users.FirstOrDefault(x => x.UserId == userId);
+                user.Albums.Add(album);
                 ctx.SaveChanges();
             }
         }

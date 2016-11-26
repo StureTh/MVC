@@ -148,10 +148,28 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Migrations\201611241433089_InitialCreate.cs" />
+    <Compile Include="Migrations\201611241433089_InitialCreate.Designer.cs">
+      <DependentUpon>201611241433089_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611251452009_AlbumMigration.cs" />
+    <Compile Include="Migrations\201611251452009_AlbumMigration.Designer.cs">
+      <DependentUpon>201611251452009_AlbumMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611252158021_OnModelCreatingMigration.cs" />
+    <Compile Include="Migrations\201611252158021_OnModelCreatingMigration.Designer.cs">
+      <DependentUpon>201611252158021_OnModelCreatingMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611261207283_AlbumMigration1.cs" />
+    <Compile Include="Migrations\201611261207283_AlbumMigration1.Designer.cs">
+      <DependentUpon>201611261207283_AlbumMigration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TheContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,6 +200,11 @@
     <Content Include="Views\Gallery\UploadPhoto.cshtml" />
     <Content Include="Views\Gallery\ShowImage.cshtml" />
     <Content Include="Views\Gallery\RecentUpload.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Gallery\NewAlbum.cshtml" />
+    <Content Include="Views\Album\ViewAlbum.cshtml" />
+    <Content Include="Views\Album\NewAlbum.cshtml" />
+    <Content Include="Views\Album\UploadToAlbum.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -193,6 +216,20 @@
     <Folder Include="App_Data\" />
     <Folder Include="GalleryPhotos\" />
     <Folder Include="Views\Comment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611241433089_InitialCreate.resx">
+      <DependentUpon>201611241433089_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611251452009_AlbumMigration.resx">
+      <DependentUpon>201611251452009_AlbumMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252158021_OnModelCreatingMigration.resx">
+      <DependentUpon>201611252158021_OnModelCreatingMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611261207283_AlbumMigration1.resx">
+      <DependentUpon>201611261207283_AlbumMigration1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

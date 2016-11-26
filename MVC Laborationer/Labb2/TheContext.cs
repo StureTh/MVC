@@ -16,5 +16,21 @@ namespace Labb2
         public DbSet<User> Users { get; set; }
         public DbSet<Comment> Comments  { get; set; }
 
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Album>().
+              HasMany(c => c.Photos).
+              WithMany(p => p.Albums).
+              Map(
+               m =>
+               {
+                   m.MapLeftKey("AlbumId");
+                   m.MapRightKey("PhotoId");
+                   m.ToTable("PhotoAlbums");
+               });
+        }
     }
+
+
 }

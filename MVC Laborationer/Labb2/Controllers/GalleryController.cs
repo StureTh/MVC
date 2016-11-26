@@ -14,12 +14,21 @@ namespace Labb2.Controllers
         // GET: Gallery
         public ActionResult Index()
         {
-            if (Session["UserId"]!= null)
+            //if (Session["UserId"]!= null)
+            //{
+            //    var photoList = Dal.GetPhotos();
+            //    return View(photoList);
+            //}
+            //return RedirectToAction("Login","Account");
+          
+
+            // Test till Album
+            if (Session["UserId"] !=null)
             {
-                var photoList = Dal.GetPhotos();
-                return View(photoList);
+                var albumList = Dal.GetAlbums();
+                return View(albumList);
             }
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login", "Account");
         }
 
 
@@ -62,5 +71,7 @@ namespace Labb2.Controllers
             return PartialView(model: list);
             
         }
+
+       
     }
 }

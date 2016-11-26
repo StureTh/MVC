@@ -22,6 +22,8 @@ namespace Labb2.Models
         
         public string PhotoUrl { get; set; }
 
+        public virtual ICollection<Album> Albums { get; set; } 
+
         public virtual ICollection<Comment> Comments { get; set; }
 
     }
