@@ -23,7 +23,7 @@ namespace Labb2
         {
             using (TheContext ctx = new TheContext())
             {
-                var image = ctx.Photos.FirstOrDefault(x => x.PhotoId == id);
+                var image = ctx.Photos.Include("Comments").FirstOrDefault(x => x.PhotoId == id);
                 return image;
             }
         }
@@ -107,13 +107,18 @@ namespace Labb2
             }
         }
 
-        public void AddNewComment(Comment comment)
+        public void AddNewComment(Guid photoId,Comment comment)
         {
             using (TheContext ctx = new TheContext())
             {
+                var photo = ctx.Photos.Single(p => p.PhotoId == photoId);
+                photo.Comments.Add(comment);
+
                 ctx.Comments.Add(comment);
                 ctx.SaveChanges();
             }
         }
+
+      
     }
 }

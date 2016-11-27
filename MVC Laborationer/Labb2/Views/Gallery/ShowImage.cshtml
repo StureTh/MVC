@@ -5,7 +5,17 @@
 @{
     ViewBag.Title = "ShowImage";
 }
-
-<h2>@Model.PhotoName</h2>
-<img id="@Model.PhotoId" src="@Url.Content(Model.PhotoUrl)"alt="Image from folder"style="max-width: 100%"/>
-
+<div id="DisplayPhotoId">
+    <h2>@Model.PhotoName</h2>
+    <img id="@Model.PhotoId" src="@Url.Content(Model.PhotoUrl)" alt="Image from folder" style="max-width: 100%"/>
+</div>
+<div id="PostCommentId">
+    @{
+        Html.RenderAction("PostComment","Comment",new {photoId = Model.PhotoId});
+    }
+</div>
+<div id="ShowCommentsId">
+    @{
+        Html.RenderAction("ViewComments","Comment",new { photoId = Model.PhotoId});
+    }
+</div>

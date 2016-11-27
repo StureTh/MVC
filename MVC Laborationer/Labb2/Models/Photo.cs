@@ -9,6 +9,10 @@ namespace Labb2.Models
 {
     public class Photo
     {
+        public Photo() 
+        {
+            this.Comments = new HashSet<Comment>();
+        }
         
         public Guid PhotoId { get; set; }
 

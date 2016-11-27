@@ -169,6 +169,10 @@
     <Compile Include="Migrations\201611261207283_AlbumMigration1.Designer.cs">
       <DependentUpon>201611261207283_AlbumMigration1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611271405484_CommentMigration.cs" />
+    <Compile Include="Migrations\201611271405484_CommentMigration.Designer.cs">
+      <DependentUpon>201611271405484_CommentMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TheContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,6 +209,8 @@
     <Content Include="Views\Album\ViewAlbum.cshtml" />
     <Content Include="Views\Album\NewAlbum.cshtml" />
     <Content Include="Views\Album\UploadToAlbum.cshtml" />
+    <Content Include="Views\Comment\PostComment.cshtml" />
+    <Content Include="Views\Comment\ViewComments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -215,7 +221,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="GalleryPhotos\" />
-    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611241433089_InitialCreate.resx">
@@ -229,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611261207283_AlbumMigration1.resx">
       <DependentUpon>201611261207283_AlbumMigration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611271405484_CommentMigration.resx">
+      <DependentUpon>201611271405484_CommentMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

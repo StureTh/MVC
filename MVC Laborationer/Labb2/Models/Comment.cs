@@ -11,12 +11,14 @@ namespace Labb2.Models
     {
         
         public Guid CommentId { get; set; }
-
+        [Required(ErrorMessage = "Please enter Comment")]
         public string CommentComment { get; set; }
 
         public DateTime Date { get; set; }
 
-        public virtual Guid UserId { get; set; }
+        public  Guid PhotoId { get; set; }
+
+        public virtual User CommentByUser { get; set; }
         
 
     }
