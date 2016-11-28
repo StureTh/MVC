@@ -5,54 +5,65 @@
 }
 
 <h2>LäggTillPerson</h2>
+@{
+    var ajaxOptions = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "addPerson"
+    };
+}
 
-
-@using (Html.BeginForm()) 
+@using (Ajax.BeginForm("LäggTillPerson",ajaxOptions)) 
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <hr/>
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         <div class="form-group">
-            @Html.LabelFor(model => model.Namn, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Namn, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Namn, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Namn, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Namn, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Namn, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Adress, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Adress, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Adress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Adress, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Adress, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TelefonNr, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TelefonNr, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TelefonNr, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TelefonNr, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TelefonNr, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.TelefonNr, "", new {@class = "text-danger"})
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Lägg till i adressbok" class="btn btn-default" />
+
+
+                <input type="submit" value="Lägg till i adressbok" class="btn btn-default"/>
+
             </div>
         </div>
     </div>
+    <div id="addPerson"></div>
+ 
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

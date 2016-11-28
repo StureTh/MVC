@@ -60,7 +60,7 @@ namespace Adressbok.Controllers
             personToEdit.AdressÄndring = DateTime.Now;
             personToEdit.TelefonNr = person.TelefonNr;
             
-            return View(personToEdit);
+            return RedirectToAction("VisaAdressBok");
 
         }
 
