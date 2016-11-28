@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Adressbok.Models.Person>
+
+@{
+    ViewBag.Title = "VisaAdressBok";
+}
+
+<h2>AdressBoken</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Namn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelefonNr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdressÄndring)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Namn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelefonNr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdressÄndring)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PersonId}) |
+            
+            @Html.ActionLink("Delete", "Delete", new { id=item.PersonId })
+        </td>
+    </tr>
+}
+
+</table>
