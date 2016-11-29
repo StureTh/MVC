@@ -17,11 +17,14 @@
 
 <h2>Gallery</h2>
 <div class="container-fluid">
-    <div style="margin-bottom: 40px">
-        @Html.ActionLink("Upload", "UploadPhoto", "Gallery", new {@class = "navbar-brand"})
+    <div style="margin-top: 40px">
+        @foreach (var album in Model)
+        {
+            <a href='@Url.Action("ViewAlbum", "Album", new {id = album.AlbumId}, null)'>
+                @Html.ActionLink(@album.AlbumName, "ViewAlbum", "Album", new { id = album.AlbumId }, new { @class = "navbar-brand" })
+            </a>
+        }
     </div>
-    <br/>
-    <br/>
 
     @*<div style="margin-top: 40px">
         @foreach(var photo in Model)
@@ -32,13 +35,6 @@
             </a>
         }
     </div>*@
-    <div style="margin-top: 40px">
-        @foreach (var album in Model)
-        {
-            <a href='@Url.Action("ViewAlbum", "Album", new {id = album.AlbumId}, null)'>
-                @Html.ActionLink(@album.AlbumName,"ViewAlbum","Album",new {id= album.AlbumId},new {@class = "navbar-brand"})
-            </a>
-        }
-    </div>
+    
 </div>
 

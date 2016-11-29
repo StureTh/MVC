@@ -11,8 +11,9 @@
 <div class="container-fluid">
     <div style="margin-bottom: 40px">
        
-            @Html.ActionLink("Upload", "UploadToAlbum", "Album",new {albumId = Model.AlbumId}, new { @class = "navbar-brand" })
-    
+      
+            @Html.ActionLink("Upload", "UploadToAlbum", "Album", new { albumId = Model.AlbumId }, new { @class = "navbar-brand" })
+        
         <div style="margin-top: 40px">
             @foreach (var photo in @Model.Photos)
             {

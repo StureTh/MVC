@@ -98,6 +98,15 @@ namespace Labb2
                 ctx.SaveChanges();
             }
         }
+
+        public User GettUserByID(Guid id)
+        {
+            using(TheContext ctx = new TheContext())
+            {
+                var currentUser = ctx.Users.Include("Albums").Single(u => u.UserId == id);
+                return currentUser;
+            }
+        }
         public User LoginUser(User user)
         {
             using(TheContext ctx = new TheContext())
