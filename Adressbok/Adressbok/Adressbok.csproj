@@ -151,10 +151,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Adressbok\VisaAdressBok.cshtml" />
     <Content Include="Views\Adressbok\Index.cshtml" />
     <Content Include="Views\Adressbok\Edit.cshtml" />
-    <Content Include="Views\Adressbok\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -173,6 +171,7 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Adressbok\VisaAdressBok.cshtml" />
     <Content Include="Views\Adressbok\LäggTillPerson.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

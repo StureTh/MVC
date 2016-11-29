@@ -31,7 +31,7 @@ namespace Adressbok.Controllers
                
                 PersonLista.Add(person);
 
-                return RedirectToAction("VisaAdressBok");
+                return PartialView("VisaAdressBok", PersonLista);
             }
             else
             {
@@ -41,7 +41,7 @@ namespace Adressbok.Controllers
 
         public ActionResult VisaAdressBok()
         {
-            return View(PersonLista);
+            return PartialView(PersonLista);
         }
 
         public ActionResult Edit(Guid id)
@@ -65,14 +65,14 @@ namespace Adressbok.Controllers
 
         }
 
-        
-        public ActionResult Delete(Person person)
+        [HttpPost]
+        public ActionResult Delete(Guid id)
         {
-            var personToRemove = PersonLista.Find(x => x.PersonId == person.PersonId);
+            var personToRemove = PersonLista.Find(x => x.PersonId == id);
 
             PersonLista.Remove(personToRemove);
 
-            return RedirectToAction("VisaAdressBok");
+            return PartialView("VisaAdressBok",PersonLista);
             
         }
     }
