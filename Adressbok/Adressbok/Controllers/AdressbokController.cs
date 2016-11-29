@@ -26,6 +26,7 @@ namespace Adressbok.Controllers
         {
             if (ModelState.IsValid)
             {
+                person.PersonId = Guid.NewGuid();
                 person.AdressÄndring = DateTime.Now;
                
                 PersonLista.Add(person);
@@ -54,7 +55,7 @@ namespace Adressbok.Controllers
         {
 
             var personToEdit = PersonLista.Find(x => x.PersonId == person.PersonId);
-
+            
             personToEdit.Namn = person.Namn;
             personToEdit.Adress = person.Adress;
             personToEdit.AdressÄndring = DateTime.Now;
