@@ -6,9 +6,7 @@
 
 <div id="add">
     <h2>VisaAdressBok</h2>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
+    
     <table class="table">
         <tr>
             <th>
@@ -43,7 +41,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.PersonId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.PersonId }) |
+                  
                     @Ajax.ActionLink("Delete", "Delete", "Adressbok", new { id = item.PersonId }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "add" })
                 </td>
             </tr>

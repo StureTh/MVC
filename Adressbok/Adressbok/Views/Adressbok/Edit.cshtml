@@ -3,15 +3,17 @@
 @{
     ViewBag.Title = "Edit";
 }
+@{
+  var  ajaxOptions = new AjaxOptions {HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "FinishEdit"};
 
+}
 <h2>Edit</h2>
 
-@using (Ajax.BeginForm("Edit",
-    new AjaxOptions {HttpMethod = "POST",InsertionMode = InsertionMode.Replace,UpdateTargetId = "FinishEdit"}))
+@using (Ajax.BeginForm("Edit", ajaxOptions))
 {
-    @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+                <div class="form-horizontal">
         <h4>Person</h4>
         <hr/>
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
@@ -55,8 +57,9 @@
             </div>
         </div>
     </div>
-    <div result="FinishEdit"></div>
 }
+<div result="FinishEdit"></div>
+
 
 <div>
     @Html.ActionLink("Adressbok", "VisaAdressBok")
