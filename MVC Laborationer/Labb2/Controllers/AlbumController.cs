@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Labb2.Models;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Labb2.Controllers
 {
@@ -16,15 +17,7 @@ namespace Labb2.Controllers
         // GET: Album
         public ActionResult Index()
         {
-            //if (Session["UserId"] == null)
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-
-            //var photolist = Dal.GetPhotos();
-
-
-            //return View(photolist);
+           
             return View();
 
         }
@@ -114,8 +107,44 @@ namespace Labb2.Controllers
                 return View(photo);
             }
 
+            
 
 
+
+
+        }
+
+        public ActionResult DeleteAlbum(Guid albumId)
+        {
+            
+               
+
+
+                var albumToDelete = Dal.GettAlbumById(albumId);
+
+                if (albumToDelete.AlbumId == albumId)
+                {
+
+                    if (albumToDelete.Photos != null)
+                    {
+                        foreach (var img in albumToDelete.Photos)
+                        {
+                            var filePath = Request.MapPath(img.PhotoUrl);
+                            FileInfo file = new FileInfo(filePath);
+                            if (file.Exists)
+                            {
+                                file.Delete();
+                            }
+                        }
+                    }
+
+
+                    Dal.DeleteAlbum(albumToDelete.AlbumId);
+                    return RedirectToAction("Index", "Gallery");
+
+                }
+
+            return RedirectToAction("Index", "Home");
 
         }
 

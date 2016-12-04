@@ -8,7 +8,10 @@
 <div id="DisplayPhotoId">
     <h2>@Model.PhotoName</h2>
     <img id="@Model.PhotoId" src="@Url.Content(Model.PhotoUrl)" alt="Image from folder" style="max-width: 100%"/>
+     @Html.ActionLink("Delete","DeletePhoto","Gallery",new {photoId = Model.PhotoId},null)
+
 </div>
+
 <div id="PostCommentId">
     @{
         Html.RenderAction("PostComment","Comment",new {photoId = Model.PhotoId});

@@ -36,6 +36,17 @@ namespace Labb2
             }
         }
 
+        public void DeletePhoto(Guid id)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var photo = ctx.Photos.FirstOrDefault(p => p.PhotoId == id);
+
+                ctx.Photos.Remove(photo);
+                ctx.SaveChanges();
+            }
+        }
+
         internal object GetRecentUploads(int count)
         {
             using (TheContext ctx = new TheContext())
@@ -86,6 +97,18 @@ namespace Labb2
                
                 var user = ctx.Users.FirstOrDefault(x => x.UserId == userId);
                 user.Albums.Add(album);
+                ctx.SaveChanges();
+            }
+        }
+
+      
+
+        public void DeleteAlbum(Guid id)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var album = ctx.Albums.FirstOrDefault(a => a.AlbumId == id);
+                ctx.Albums.Remove(album);
                 ctx.SaveChanges();
             }
         }

@@ -72,6 +72,27 @@ namespace Labb2.Controllers
             
         }
 
-       
+        
+        public ActionResult DeletePhoto(string photoId)
+
+        {
+            var inputPhotoId = Guid.Parse(photoId);
+            var photo = Dal.GetPhotoById(inputPhotoId);
+            string absolutePath = HttpContext.Server.MapPath((photo.PhotoUrl));
+            if (System.IO.File.Exists(absolutePath))
+            {
+                Dal.DeletePhoto(photo.PhotoId);
+                System.IO.File.Delete(absolutePath);
+                return RedirectToAction("Index", "Gallery");
+            }
+
+
+
+            return RedirectToAction("Index","Gallery");
+
+
+        }
+
+
     }
 }

@@ -22,6 +22,7 @@
                 @if (Session["UserId"] != null)
                 {
                     @Html.ActionLink("Gallery","Index","Gallery",null,new {@class="navbar-brand"})
+                    @Html.ActionLink("NewAlbum", "NewAlbum", "Album", null, new { @class = "navbar-brand" })
                     @Html.ActionLink("Logout","Logout","Account",null,new {@class="navbar-brand"})
 
                 }
