@@ -13,7 +13,7 @@
        
       
             @Html.ActionLink("Upload", "UploadToAlbum", "Album", new { albumId = Model.AlbumId }, new { @class = "navbar-brand" })
-        @Html.ActionLink("Delete","DeleteAlbum","Album",new {albumId = Model.AlbumId},null)
+            @Html.ActionLink("Delete","DeleteAlbum","Album",new {albumId = Model.AlbumId},null)
         
         <div style="margin-top: 40px">
             @foreach (var photo in @Model.Photos)

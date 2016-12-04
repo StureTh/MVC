@@ -151,6 +151,17 @@ namespace Labb2
             }
         }
 
+        public void DeleteComment(Guid commentId)
+        {
+            using (TheContext ctx = new TheContext())
+            {
+                var comment = ctx.Comments.FirstOrDefault(c => c.CommentId == commentId);
+
+                ctx.Comments.Remove(comment);
+                ctx.SaveChanges();
+            }
+        }
+
       
     }
 }

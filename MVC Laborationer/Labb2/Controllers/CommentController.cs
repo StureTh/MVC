@@ -47,5 +47,11 @@ namespace Labb2.Controllers
                 return View(comment);
             }
         }
+
+        public ActionResult DeleteComment(Guid commentId)
+        {
+            _dal.DeleteComment(commentId);
+            return RedirectToAction("Index", "Gallery");
+        }
     }
 }
