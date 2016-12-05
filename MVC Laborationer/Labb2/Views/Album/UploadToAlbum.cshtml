@@ -9,10 +9,12 @@
 <h2>UploadToAlbum</h2>
 
 
-@using (Html.BeginForm("UploadToAlbum","Album", new { albumId = ViewBag.id }, FormMethod.Post, new {enctype = "multipart/form-data"}))
+@using (Html.BeginForm("UploadToAlbum","Album", new { albumId = ViewBag.id }, FormMethod.Post, new {enctype = "multipart/form-data", id="upload"}))
 {
 
     @Html.AntiForgeryToken()
+
+  
     
     <div class="form-horizontal">
         <h4>Photo</h4>
@@ -48,4 +50,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+@*<script src="~/scripts/UploadPhotos.js"></script>*@
