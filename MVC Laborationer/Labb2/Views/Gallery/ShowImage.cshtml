@@ -19,6 +19,7 @@
 </div>
 <div id="ShowCommentsId">
     @{
-        Html.RenderAction("ViewComments","Comment",new { photoId = Model.PhotoId});
+        Html.RenderAction("ViewComments", "Comment", new {photoId = Model.PhotoId});
     }
 </div>
+<script src="~/scripts/PostComment.js"></script>

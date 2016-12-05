@@ -45,7 +45,7 @@ namespace Labb2.Controllers
             Dal.AddNewAlbum(album, (Guid)Session["UserId"]);
             return RedirectToAction("Index", "Gallery");
 
-        }
+        } 
 
         public ActionResult ViewAlbum(Guid id)
         {
@@ -116,11 +116,15 @@ namespace Labb2.Controllers
 
         public ActionResult DeleteAlbum(Guid albumId)
         {
+            var user = Dal.GettUserByID((Guid) Session["UserId"]);
             
                
 
 
                 var albumToDelete = Dal.GettAlbumById(albumId);
+            if (user.Albums.Any(u => u.AlbumId == albumId))
+            {
+
 
                 if (albumToDelete.AlbumId == albumId)
                 {
@@ -143,8 +147,13 @@ namespace Labb2.Controllers
                     return RedirectToAction("Index", "Gallery");
 
                 }
+            }
+            
+                return RedirectToAction("Index", "Home");
 
-            return RedirectToAction("Index", "Home");
+
+            
+
 
         }
 

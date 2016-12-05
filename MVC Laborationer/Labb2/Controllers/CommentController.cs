@@ -54,4 +54,4 @@ namespace Labb2.Controllers
             return RedirectToAction("Index", "Gallery");
         }
     }
-}
+} 

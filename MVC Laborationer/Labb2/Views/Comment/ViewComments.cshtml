@@ -1,33 +1,36 @@
 ﻿@model IEnumerable<Labb2.Models.Comment>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentComment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
 
-        <th>
-            
-        </th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CommentComment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentComment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Delete","DeleteComment","Comment", new {commentId = item.CommentId},null)
-        </td>
-          
-    </tr>
-}
+            <th>
 
-</table>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CommentComment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteComment", "Comment", new { commentId = item.CommentId }, null)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
