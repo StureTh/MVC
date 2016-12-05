@@ -7,22 +7,26 @@
     ViewBag.Title = "ViewAlbum";
 }
 
-<h2>ViewAlbum</h2>
-<div class="container-fluid">
-    <div style="margin-bottom: 40px">
-       
-      
-            @Html.ActionLink("Upload", "UploadToAlbum", "Album", new { albumId = Model.AlbumId }, new { @class = "navbar-brand" })
-            @Html.ActionLink("Delete","DeleteAlbum","Album",new {albumId = Model.AlbumId},null)
-        
-        <div style="margin-top: 40px">
-            @foreach (var photo in @Model.Photos)
-            {
+<
+<div class="container-full" style="margin-top: 100px;">
+    <div class="centerBlock"><h2>@Model.AlbumName</h2></div>
+    @{
+        Html.RenderAction("PhotoSlider","Album",@Model.AlbumId);
+    }
 
-                <a href='@Url.Action("ShowImage", "Gallery", new {id = photo.PhotoId}, null)'>
-                    <img src="@Url.Content(photo.PhotoUrl)" alt="Image From Folder" style="max-width: 100%; max-height: 300px"/>
-                </a>
-            }
-        </div>
+
+    <div class="Image-thumb">
+        @Html.ActionLink("Upload", "UploadToAlbum", "Album", new { albumId = Model.AlbumId }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Delete", "DeleteAlbum", "Album", new { albumId = Model.AlbumId }, new { @class = "navbar-brand" })
+
+
+        @foreach (var photo in @Model.Photos)
+        {
+
+            <a href='@Url.Action("ShowImage", "Gallery", new {id = photo.PhotoId}, null)'>
+                <img src="@Url.Content(photo.PhotoUrl)" alt="Image From Folder"/>
+            </a>
+        }
     </div>
+   
 </div>

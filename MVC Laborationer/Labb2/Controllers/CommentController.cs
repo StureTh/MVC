@@ -50,8 +50,10 @@ namespace Labb2.Controllers
 
         public ActionResult DeleteComment(Guid commentId)
         {
+           
             _dal.DeleteComment(commentId);
             return RedirectToAction("Index", "Gallery");
+
         }
     }
 } 

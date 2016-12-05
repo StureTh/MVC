@@ -151,6 +151,7 @@ namespace Labb2
             }
         }
 
+    
         public void DeleteComment(Guid commentId)
         {
             using (TheContext ctx = new TheContext())

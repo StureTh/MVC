@@ -1,0 +1,23 @@
+﻿@model Labb2.Models.Album
+<div class="container-full" style="">
+    <ul class="BoxSlider" style="">
+        @foreach (var photo in @Model.Photos)
+        {
+            <li style="vertical-align: middle; background-color: black; height: 640px;">
+                <img id="photo.PhotoId" src="@Url.Content(photo.PhotoUrl)" style="max-height: 640px; height: 100%;  width: auto; display: block;
+
+                                      margin-left: auto;
+                                      margin-right: auto" />
+            </li>
+        }
+    </ul>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<link href="~/Content/jquery.bxslider.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.bxslider.js"></script>
+<script>
+    $('.BoxSlider').bxSlider({
+        mode: 'fade',
+        captions: true
+    });
+</script>

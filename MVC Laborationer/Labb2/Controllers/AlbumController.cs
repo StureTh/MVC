@@ -157,6 +157,12 @@ namespace Labb2.Controllers
 
         }
 
+        public ActionResult PhotoSlider(Guid id)
+        {
+            var album = Dal.GettAlbumById(id);
+            return PartialView(album);
+        }
+
 
 
 

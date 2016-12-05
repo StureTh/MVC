@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Labb2.Models.Comment>
 
 
-
+<div id="del">
     <table class="table">
         <tr>
             <th>
@@ -26,11 +26,11 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "DeleteComment", "Comment", new { commentId = item.CommentId }, null)
+                    @Html.ActionLink("Delete", "DeleteComment", "Comment", new { commentId = item.CommentId },null)
                 </td>
 
             </tr>
         }
 
     </table>
-
+</div>
