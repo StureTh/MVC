@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Remoting.Services;
 using System.Web;
+using Labb2Data;
 
 namespace Labb2.Models
 {
@@ -28,9 +29,37 @@ namespace Labb2.Models
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
 
-        public bool IsAdmin { get; set; }
+       
 
-        public virtual ICollection<Album> Albums { get; set; }
+        public List<Album> Albums { get; set; }
 
+        public UserDataModel Transform()
+        {
+            var dataModel = new UserDataModel
+            {
+                UserId = this.UserId,
+                UserName = this.UserName,
+                Mail = this.Mail,
+                Password = this.Password,
+                ConfirmPassword = this.ConfirmPassword,
+                Albums = this.Albums.Select(a => a.Transform()).ToList()
+            };
+            return dataModel;
+        }
+
+        public User(UserDataModel userData)
+        {
+            UserId = userData.UserId;
+            UserName = userData.UserName;
+            Mail = userData.Mail;
+            Password = userData.Password;
+            ConfirmPassword = userData.ConfirmPassword;
+            Albums = new List<Album>();
+        }
+
+        public User()
+        {
+            Albums = new List<Album>();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using Labb2Data;
 
 namespace Labb2.Models
 {
@@ -18,8 +19,35 @@ namespace Labb2.Models
 
         public  Guid PhotoId { get; set; }
 
-        public virtual User CommentByUser { get; set; }
-        
+        public  Guid CommentByUserId { get; set; }
+
+
+        public CommentDataModel Transform()
+        {
+            var dataModel = new CommentDataModel
+            {
+                CommentId = this.CommentId,
+                CommentComment = this.CommentComment,
+                Date = this.Date,
+                PhotoId = this.PhotoId,
+                CommentByUserId = this.CommentByUserId
+            };
+            return dataModel;
+        }
+
+        public Comment(CommentDataModel commentData)
+        {
+            CommentId = commentData.CommentId;
+            CommentComment = commentData.CommentComment;
+            Date = commentData.Date;
+            PhotoId = commentData.PhotoId;
+            CommentByUserId = commentData.CommentByUserId;
+        }
+
+        public Comment()
+        {
+            
+        }
 
     }
 }

@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Labb2.Models;
+using Labb2Data;
+
+
 namespace Labb2.Controllers
 {
     public class AccountController : Controller
     {
-        private static DataAccess Dal = new DataAccess();
+        private static UserRepository Dal = new UserRepository();
         
         // GET: Account
         public ActionResult Index()
@@ -30,7 +33,7 @@ namespace Labb2.Controllers
 
             }
             userAccount.UserId = Guid.NewGuid();
-            Dal.AddNewUser(userAccount);
+            Dal.AddNewUser(userAccount.Transform());
             ViewBag.Message = userAccount.UserName + "Success";
 
             return View();
@@ -49,14 +52,14 @@ namespace Labb2.Controllers
         [HttpPost]
         public ActionResult Login(User userAccount)
         {
-            var user = Dal.LoginUser(userAccount);
+            var user = Dal.LoginUser(userAccount.Transform());
             if (user != null)
             {
                 Session["UserId"] = user.UserId;
                 Session["UserName"] = user.UserName;
                 Session["Mail"] = user.Mail;
                 Session["Password"] = user.Password;
-                Session["Admin"] = user.IsAdmin;
+               
 
                 return RedirectToAction("LoggedIn");
             }
@@ -89,5 +92,8 @@ namespace Labb2.Controllers
             return Redirect(url);
         }
 
+       
+
     }
+   
 }

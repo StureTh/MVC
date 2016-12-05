@@ -160,7 +160,6 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DataAccess.cs" />
     <Compile Include="Migrations\201611241433089_InitialCreate.cs" />
     <Compile Include="Migrations\201611241433089_InitialCreate.Designer.cs">
       <DependentUpon>201611241433089_InitialCreate.cs</DependentUpon>
@@ -182,7 +181,6 @@
       <DependentUpon>201611271405484_CommentMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="TheContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,6 +244,12 @@
     <EmbeddedResource Include="Migrations\201611271405484_CommentMigration.resx">
       <DependentUpon>201611271405484_CommentMigration.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Labb2Data\Labb2Data.csproj">
+      <Project>{86edbed0-fa45-435e-88a8-8f907d9c675d}</Project>
+      <Name>Labb2Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

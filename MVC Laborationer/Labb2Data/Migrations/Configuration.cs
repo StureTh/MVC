@@ -1,4 +1,4 @@
-namespace Labb2.Migrations
+namespace Labb2Data.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -10,7 +10,6 @@ namespace Labb2.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Labb2.TheContext";
         }
 
         protected override void Seed(Labb2Data.TheContext context)

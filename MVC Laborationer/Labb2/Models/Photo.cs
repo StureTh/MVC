@@ -4,15 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.CodeDom;
+using Labb2Data;
 
 namespace Labb2.Models
 {
     public class Photo
     {
-        public Photo() 
-        {
-            this.Comments = new HashSet<Comment>();
-        }
+       
         
         public Guid PhotoId { get; set; }
 
@@ -26,9 +24,37 @@ namespace Labb2.Models
         
         public string PhotoUrl { get; set; }
 
-        public virtual ICollection<Album> Albums { get; set; } 
+        public  List<Album> Albums { get; set; } 
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
 
+        public PhotoDataModel Transform()
+        {
+            var dataModel = new PhotoDataModel
+            {
+                PhotoId = this.PhotoId,
+                PhotoName = this.PhotoName,
+                UploadDate = this.UploadDate,
+                PhotoUrl = this.PhotoUrl,
+                Albums = this.Albums.Select(a => a.Transform()).ToList(),
+                Comments = this.Comments.Select(c => c.Transform()).ToList()
+            };
+            return dataModel;
+        }
+        public Photo(PhotoDataModel photoData)
+        {
+            PhotoId = photoData.PhotoId;
+            PhotoName = photoData.PhotoName;
+            UploadDate = photoData.UploadDate;
+            PhotoUrl = photoData.PhotoUrl;
+            Albums = new List<Album>();
+            Comments = new List<Comment>();
+        }
+
+        public Photo()
+        {
+            Albums = new List<Album>();
+            Comments = new List<Comment>();
+        }
     }
 }

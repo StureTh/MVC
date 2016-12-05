@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Labb2.Models;
 using System.IO;
+using Labb2Data;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Labb2.Controllers
@@ -13,7 +14,7 @@ namespace Labb2.Controllers
     
     public class AlbumController : Controller
     {
-        DataAccess Dal = new DataAccess();
+        AlbumRepository Dal = new AlbumRepository();
         // GET: Album
         public ActionResult Index()
         {
@@ -42,14 +43,15 @@ namespace Labb2.Controllers
             album.AlbumId = Guid.NewGuid();
 
 
-            Dal.AddNewAlbum(album, (Guid)Session["UserId"]);
+            Dal.AddNewAlbum(album.Transform(), (Guid)Session["UserId"]);
             return RedirectToAction("Index", "Gallery");
 
         } 
 
         public ActionResult ViewAlbum(Guid id)
         {
-            var album = Dal.GettAlbumById(id);
+            var album = new Album(Dal.GetAlbumById(id));
+            album.Photos = Dal.GetAlbumPhotos(id).Select(x => new Photo(x)).ToList();
             return View(model: album);
                 
                 
@@ -66,11 +68,13 @@ namespace Labb2.Controllers
         [HttpPost]
         public ActionResult UploadToAlbum(Photo photo, HttpPostedFileBase file, Guid albumId)
         {
-            var user = Dal.GettUserByID((Guid)Session["UserId"]);
-            var album = Dal.GettAlbumById(albumId);
+            var userRepo = new UserRepository();
+            
+            var user = new User(userRepo.GetUserById((Guid)Session["UserId"])); 
+            var album = new Album(Dal.GetAlbumById(albumId));
 
 
-
+            user.Albums = Dal.GetUserAlbum(user.UserId).Select(x => new Album(x)).ToList();
             if (user.Albums.Any(x => x.AlbumId == albumId))
             {
 
@@ -95,7 +99,7 @@ namespace Labb2.Controllers
                 photo.UploadDate = DateTime.Now;
                 photo.PhotoUrl = "~/GalleryPhotos/" + file.FileName;
 
-                Dal.SavePhotoInAlbum(albumId, photo);
+                Dal.SavePhotoInAlbum(albumId, photo.Transform());
 
                 file.SaveAs(Path.Combine(Server.MapPath("~/GalleryPhotos"), file.FileName));
 
@@ -116,21 +120,22 @@ namespace Labb2.Controllers
 
         public ActionResult DeleteAlbum(Guid albumId)
         {
-            var user = Dal.GettUserByID((Guid) Session["UserId"]);
-            
-               
+            var userRepo = new UserRepository();
+
+            var user = new User(userRepo.GetUserById((Guid)Session["UserId"])); 
+
+            user.Albums = Dal.GetUserAlbum(user.UserId).Select(x => new Album(x)).ToList();
 
 
-                var albumToDelete = Dal.GettAlbumById(albumId);
+                //var albumToDelete = new Album(Dal.GetAlbumById(albumId)); 
             if (user.Albums.Any(u => u.AlbumId == albumId))
             {
 
 
-                if (albumToDelete.AlbumId == albumId)
-                {
+                var albumToDelete = Dal.GetAlbumById(albumId);
 
-                    if (albumToDelete.Photos != null)
-                    {
+                   
+                    
                         foreach (var img in albumToDelete.Photos)
                         {
                             var filePath = Request.MapPath(img.PhotoUrl);
@@ -140,13 +145,13 @@ namespace Labb2.Controllers
                                 file.Delete();
                             }
                         }
-                    }
+                    
 
 
                     Dal.DeleteAlbum(albumToDelete.AlbumId);
                     return RedirectToAction("Index", "Gallery");
 
-                }
+                
             }
             
                 return RedirectToAction("Index", "Home");
@@ -159,7 +164,8 @@ namespace Labb2.Controllers
 
         public ActionResult PhotoSlider(Guid id)
         {
-            var album = Dal.GettAlbumById(id);
+            var album = new Album(Dal.GetAlbumById(id));
+            album.Photos = Dal.GetAlbumPhotos(id).Select(x => new Photo(x)).ToList();
             return PartialView(album);
         }
 

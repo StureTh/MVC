@@ -5,13 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Labb2.Models;
+using Labb2Data;
 
 
 namespace Labb2.Controllers
 {
     public class CommentController : Controller
     {
-        DataAccess _dal = new DataAccess();
+        CommentRepository _dal = new CommentRepository();
         // GET: Comment
         public ActionResult Index()
         { 
@@ -21,8 +22,10 @@ namespace Labb2.Controllers
         //[HttpGet]
         public ActionResult ViewComments(Guid photoId)
         {
-            var photo = _dal.GetPhotoById(photoId);
-            var comment = photo.Comments.OrderByDescending(c => c.Date);
+
+
+
+            var comment = _dal.GetPhotoComments(photoId).Select(x => new Comment(x)).ToList();
             return PartialView(comment);
         }
 
@@ -39,7 +42,7 @@ namespace Labb2.Controllers
                 comment.CommentId = Guid.NewGuid();
                 comment.Date = DateTime.Now;
 
-                _dal.AddNewComment(photoId, comment);
+                _dal.AddNewComment(photoId, comment.Transform());
                 return PartialView();
             }
             else

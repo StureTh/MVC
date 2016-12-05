@@ -5,12 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Labb2.Models;
+using Labb2Data;
 
 namespace Labb2.Controllers
 {
     public class GalleryController : Controller
     {
-        public static readonly DataAccess Dal = new DataAccess();
+        public static readonly PhotoRepository Dal = new PhotoRepository();
         // GET: Gallery
         public ActionResult Index()
         {
@@ -23,9 +24,10 @@ namespace Labb2.Controllers
           
 
             // Test till Album
+            var albumRepo = new AlbumRepository();
             if (Session["UserId"] !=null)
             {
-                var albumList = Dal.GetAlbums();
+                var albumList = albumRepo.GetAlbums().Select(x => new Album(x)).ToList();
                 return View(albumList);
             }
             return RedirectToAction("Login", "Account");
@@ -51,7 +53,7 @@ namespace Labb2.Controllers
             photo.PhotoUrl = "~/GalleryPhotos/" + image.FileName;
             photo.UploadDate = DateTime.Now;
             photo.PhotoId = Guid.NewGuid();
-            Dal.AddNewPhoto(photo);
+            Dal.AddNewPhoto(photo.Transform());
 
             image.SaveAs(Path.Combine(Server.MapPath("~/GalleryPhotos"), image.FileName));
             return RedirectToAction("Index");
@@ -61,13 +63,13 @@ namespace Labb2.Controllers
 
         public ActionResult ShowImage(Guid id)
         {
-            var photo = Dal.GetPhotoById(id);
+            var photo = new Photo(Dal.GetPhotoById(id)); 
             return View(model: photo);
         }
 
         public ActionResult RecentUpload()
         {
-            var list = Dal.GetRecentUploads(3);
+            var list = Dal.GetRecentUploads(3).Select(x => new Photo(x)).ToList();
             return PartialView(model: list);
             
         }
