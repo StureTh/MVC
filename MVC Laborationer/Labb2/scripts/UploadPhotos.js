@@ -16,7 +16,7 @@ $("form#upload").submit(function (e) {
         type: "POST",
         data: formData,
         success: function (data) {
-            alert(data);
+            window.location.href = data + "?gid="+ $('#albumId').val();
         },
         cache: false,
         processData: false,

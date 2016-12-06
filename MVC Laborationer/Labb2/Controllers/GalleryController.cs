@@ -15,13 +15,13 @@ namespace Labb2.Controllers
         // GET: Gallery
         public ActionResult Index()
         {
-            //if (Session["UserId"]!= null)
+            //if (Session["UserId"] != null)
             //{
-            //    var photoList = Dal.GetPhotos();
+            //    var photoList = Dal.GetPhotos().Select(x => new Photo(x)).ToList();
             //    return View(photoList);
             //}
-            //return RedirectToAction("Login","Account");
-          
+            //return RedirectToAction("Login", "Account");
+
 
             // Test till Album
             var albumRepo = new AlbumRepository();

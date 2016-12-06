@@ -48,8 +48,9 @@ namespace Labb2.Controllers
 
         } 
 
-        public ActionResult ViewAlbum(Guid id)
+        public ActionResult ViewAlbum(string gid)
         {
+            var id = Guid.Parse(gid);
             var album = new Album(Dal.GetAlbumById(id));
             album.Photos = Dal.GetAlbumPhotos(id).Select(x => new Photo(x)).ToList();
             return View(model: album);
@@ -61,25 +62,27 @@ namespace Labb2.Controllers
 
         public ActionResult UploadToAlbum(Guid albumId)
         {
-            ViewBag.id = albumId;
+            ViewBag.id = albumId.ToString();
             return View();
         }
 
         [HttpPost]
-        public ActionResult UploadToAlbum(Photo photo, HttpPostedFileBase file, Guid albumId)
+        public ActionResult UploadToAlbum(Photo photo, HttpPostedFileBase file, string albumId)
         {
             var userRepo = new UserRepository();
-            
-            var user = new User(userRepo.GetUserById((Guid)Session["UserId"])); 
-            var album = new Album(Dal.GetAlbumById(albumId));
+
+            var guidalbumId = Guid.Parse(albumId);
+
+            var user = userRepo.GetUserById((Guid)Session["UserId"]); 
+            var album = new Album(Dal.GetAlbumById(guidalbumId));
 
 
-            user.Albums = Dal.GetUserAlbum(user.UserId).Select(x => new Album(x)).ToList();
-            if (user.Albums.Any(x => x.AlbumId == albumId))
+            user.Albums = Dal.GetUserAlbum(user.UserId);
+            if (user.Albums.Any(x => x.AlbumId == guidalbumId))
             {
 
 
-                if (!ModelState.IsValid)
+                if (photo.PhotoName == string.Empty)
                 {
                     if (file == null)
                     {
@@ -99,12 +102,12 @@ namespace Labb2.Controllers
                 photo.UploadDate = DateTime.Now;
                 photo.PhotoUrl = "~/GalleryPhotos/" + file.FileName;
 
-                Dal.SavePhotoInAlbum(albumId, photo.Transform());
+                Dal.SavePhotoInAlbum(guidalbumId, photo.Transform());
 
                 file.SaveAs(Path.Combine(Server.MapPath("~/GalleryPhotos"), file.FileName));
 
 
-                return RedirectToAction("ViewAlbum", "Album", new { id = albumId });
+                return Content("ViewAlbum");
             }
             else
             {

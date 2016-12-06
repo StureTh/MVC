@@ -1,5 +1,6 @@
-﻿
+﻿@using Labb2.Models
 @model IList<Labb2.Models.Album>
+
 
 @{
     ViewBag.Title = "Gallery";
@@ -15,19 +16,19 @@
 }
 
 
-<h2>Gallery</h2>
+<h1>Gallery</h1>
 <div class="container-fluid">
     <div style="margin-top: 40px">
         @foreach (var album in Model)
         {
-            <a href='@Url.Action("ViewAlbum", "Album", new {id = album.AlbumId}, null)'>
-                @Html.ActionLink(@album.AlbumName, "ViewAlbum", "Album", new { id = album.AlbumId }, new { @class = "navbar-brand" })
-            </a>
+            
+                @Html.ActionLink(@album.AlbumName, "ViewAlbum", "Album", new { gid = album.AlbumId.ToString() }, new { @class = "navbar-brand" })
+            
         }
     </div>
 
     @*<div style="margin-top: 40px">
-        @foreach(var photo in Model)
+        @foreach(var photo in Model.Photo)
         {
             
             <a href='@Url.Action("ShowImage", "Gallery", new {id = photo.PhotoId}, null)'>
