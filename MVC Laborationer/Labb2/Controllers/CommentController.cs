@@ -51,11 +51,12 @@ namespace Labb2.Controllers
             }
         }
 
-        public ActionResult DeleteComment(Guid commentId)
+        public ActionResult DeleteComment(Guid commentId,Guid photoId)
         {
+            
            
             _dal.DeleteComment(commentId);
-            return RedirectToAction("Index", "Gallery");
+            return RedirectToAction("ShowImage", "Gallery",new {id = photoId });
 
         }
     }

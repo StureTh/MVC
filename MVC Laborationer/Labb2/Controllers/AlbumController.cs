@@ -67,18 +67,18 @@ namespace Labb2.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadToAlbum(Photo photo, HttpPostedFileBase file, string albumId)
+        public ActionResult UploadToAlbum(Photo photo, HttpPostedFileBase file, Guid albumId)
         {
             var userRepo = new UserRepository();
 
-            var guidalbumId = Guid.Parse(albumId);
+            //var guidalbumId = Guid.Parse(albumId);
 
             var user = userRepo.GetUserById((Guid)Session["UserId"]); 
-            var album = new Album(Dal.GetAlbumById(guidalbumId));
+            var album = new Album(Dal.GetAlbumById(albumId));
 
 
             user.Albums = Dal.GetUserAlbum(user.UserId);
-            if (user.Albums.Any(x => x.AlbumId == guidalbumId))
+            if (user.Albums.Any(x => x.AlbumId == albumId))
             {
 
 
@@ -102,7 +102,7 @@ namespace Labb2.Controllers
                 photo.UploadDate = DateTime.Now;
                 photo.PhotoUrl = "~/GalleryPhotos/" + file.FileName;
 
-                Dal.SavePhotoInAlbum(guidalbumId, photo.Transform());
+                Dal.SavePhotoInAlbum(albumId, photo.Transform());
 
                 file.SaveAs(Path.Combine(Server.MapPath("~/GalleryPhotos"), file.FileName));
 

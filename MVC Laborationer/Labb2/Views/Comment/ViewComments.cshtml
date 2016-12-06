@@ -26,11 +26,12 @@
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "DeleteComment", "Comment", new { commentId = item.CommentId },null)
+                    @Html.ActionLink("Delete", "DeleteComment", "Comment", new { commentId = item.CommentId, photoId = item.PhotoId },new { data_commentId = item.CommentId, data_photoId = item.PhotoId, id = "DeleteButton" })
                 </td>
 
             </tr>
         }
 
     </table>
+    <script src="~/scripts/DeleteComment.js"></script>
 </div>

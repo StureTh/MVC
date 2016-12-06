@@ -4,12 +4,12 @@ $("form#upload").submit(function (e) {
 
     var formData = new FormData($(this)[0]);
 
-    var photoName = $("#photoName").val();
-    alert(formData);
-    var photodata = {
-        Name: $("#photoName").val()
-    };
-    alert($("#photoName").val());
+    //var photoName = $("#photoName").val();
+    //alert(formData);
+    //var photodata = {
+    //    Name: $("#photoName").val()
+    //};
+    //alert($("#photoName").val());
    
     $.ajax({
         url: "/Album/UploadToAlbum/",
