@@ -15,7 +15,11 @@ $("form#upload").submit(function (e) {
         url: "/Album/UploadToAlbum/",
         type: "POST",
         data: formData,
+        beforeSend: function (){
+            $("#spinner").fadeIn();
+        },
         success: function (data) {
+            $("#spinner").fadeOut();
             window.location.href = data + "?gid="+ $('#albumId').val();
         },
         cache: false,
