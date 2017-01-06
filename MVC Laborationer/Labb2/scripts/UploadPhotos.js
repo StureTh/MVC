@@ -20,7 +20,7 @@ $("form#upload").submit(function (e) {
         },
         success: function (data) {
             $("#spinner").fadeOut();
-            window.location.href = data + "?gid="+ $('#albumId').val();
+            window.location.href = data + "?gid="+ $("#albumId").val();
         },
         cache: false,
         processData: false,

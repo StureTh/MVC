@@ -18,6 +18,14 @@
                 photoId: ID
             },
             type: "POST",
+            beforeSend: function () {
+                alert("TestBeforeSend");
+                $("#spinner").fadeIn();
+            },
+            complete: function() {
+                $("#spinner").fadeOut();
+            },
+
             success: function(data) {
 
 
@@ -27,11 +35,11 @@
                     contentType: "application/html; charset=utf-8",
                     type: "GET",
                     dataType: "html"
-
+                    
 
                 }).success(function(result) {
                     $("div#ShowCommentsId").html(result);
-
+                   
                     commentTextBox.val("");
 
                 });

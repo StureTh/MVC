@@ -31,11 +31,11 @@ namespace Adressbok.Controllers
                
                 PersonLista.Add(person);
 
-                return PartialView("VisaAdressBok", PersonLista);
+                return PartialView("LäggTillPerson");
             }
             else
             {
-                return View(person);
+                return PartialView("LäggTillPerson",person);
             }
         }
 

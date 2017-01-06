@@ -5,10 +5,10 @@
         
 
         var CommentId = $(this).attr("data-commentId");
-        alert(CommentId)
+       
         var PhotoId = $(this).attr("data-photoId");
 
-        alert("Test")
+       
         $.ajax({
             
             url: "/Comment/DeleteComment",
@@ -16,9 +16,9 @@
                 commentId: CommentId,
                 photoId: PhotoId
             },
-            typ: "POST"
+            type: "POST"
         }).success(function () {
-            alert("Test2")
+            
             $.ajax({
                 url: "/Comment/ViewComments",
                 data: {photoId: PhotoId},
