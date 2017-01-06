@@ -9,7 +9,7 @@
     <h2>@Model.PhotoName</h2>
     <img id="@Model.PhotoId" src="@Url.Content(Model.PhotoUrl)" alt="Image from folder" style="max-width: 100%" />
     
-        @Html.ActionLink("Delete", "DeletePhoto", "Gallery", new { photoId = Model.PhotoId }, null)
+       @Html.ActionLink("Delete", "DeletePhoto", "Gallery", new { photoId = Model.PhotoId }, new { @id = "DeletePhotoButton" })
     
 </div>
 
@@ -26,3 +26,4 @@
 </div>
 <script src="~/scripts/postComment.js"></script>
 <script src="~/scripts/UpdateComments.js"></script>
+<script src="~/scripts/DeletePhoto.js"></script>

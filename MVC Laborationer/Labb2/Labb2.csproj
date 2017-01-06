@@ -127,7 +127,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="scripts\CreateAlbum.js" />
     <Content Include="scripts\DeleteComment.js" />
+    <Content Include="scripts\DeletePhoto.js" />
     <Content Include="scripts\jquery.bxslider.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -150,8 +152,10 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.js" />
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\Login.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="scripts\postComment.js" />
+    <Content Include="scripts\register.js" />
     <Content Include="scripts\Spinner.css" />
     <Content Include="scripts\UpdateComments.js" />
     <Content Include="scripts\UploadPhotos.js" />
